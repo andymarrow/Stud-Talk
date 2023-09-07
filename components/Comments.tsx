@@ -40,7 +40,7 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment 
                   user._id === (item.postedBy._ref || item.postedBy._id) && (
                     
                         <div className=' p-2 items-center' key={idx}>
-                           <div className="max-w-[90vw]">   
+                           <div className="max-w-[80vw]">   
                           <Link href={`/Profile/${user._id}`}>
                             <div className='flex items-start gap-3'>
                               <div className='w-12 h-12'>
