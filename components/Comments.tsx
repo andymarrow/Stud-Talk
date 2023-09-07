@@ -77,21 +77,21 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment 
         <input
           value={comment}
           onChange={(e) => setComment(e.target.value)}
-          className='bg-primary px-6 py-4 text-md font-medium border-2 w-[250px] md:w-[700px] lg:w-[350px] border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 flex-1 rounded-lg'
+          className='bg-primary px-6 py-4 text-md font-medium border-2 w-[300px] md:w-[600px] lg:w-[350px] border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 flex-1 rounded-lg'
           placeholder='Add comment..'
         />
         <button
           className='text-lg text-bold text-gray-400 md:text-sm lg:text:lg'
           onClick={addComment}>
           {isPostingComment ? (
-            <div className='flex items-center text-1xl font-bold  text-md  hover:text-customPink focus:text-customPink md:text-1xl hover:text-base'>
-              <FaCommentDots className='mr-2' />
-              <span className='text-xs'>Commenting</span>
+            <div className='flex items-center text-4xl font-bold  text-md  hover:text-customPink focus:text-customPink md:text-5xl '>
+              <FaCommentDots className='mr-2 focus:text-customPink' />
+              
             </div>
           ) : (
-            <div className='flex items-center text-1xl  text-md font-bold text-gray-500  md:text-1xl  hover:text-base'>
+            <div className='flex items-center text-3xl  text-md font-bold text-gray-500  md:text-3xl '>
               <FaComment className='mr-2 ' />
-              <span className=' '>Comment</span>
+              
             </div>
           )}
         </button>

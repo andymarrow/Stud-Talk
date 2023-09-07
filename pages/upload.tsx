@@ -71,11 +71,18 @@ const Upload = () => {
        
 
     }
+    const handleDiscard = () => {
+        setSavingPost(false);
+        setVideoAsset(undefined);
+        setCaption('');
+        setCatagory('');
+      };
+    
 
 
 
   return (
-    <div className='flex w-full h-full absolute md:left-0 left-20 pl-5 top-[60px] mb-10 pt-10 lg:pt-20 bg-[#F8F8F8] md:justify-center justify-start '>
+    <div className='flex w-full h-full absolute md:left-0 left-0 pl-5 top-[60px] mb-10 pt-10 lg:pt-20 bg-[#F8F8F8] md:justify-center justify-start '>
       <div className='bg-white rounded-lg xl:h-[80vh] md:w-[60%] w-[95%]  flex gap-6 flex-wrap justify-between items-center p-14 pt-6 '>
         <div>
             <div>
@@ -105,7 +112,7 @@ const Upload = () => {
                                         src={Videoasset.url}
                                         loop
                                         controls
-                                        className='rounded-xl h-[450px] mt-10 bg-black '
+                                        className='rounded-xl h-[400px] mt-10 bg-black '
                                     ></video>
                                     
 
@@ -183,7 +190,7 @@ const Upload = () => {
                     </select>
                             <div className='flex gap-6 mt-10'>
                                 <button
-                                    onClick={()=>{}}
+                                     onClick={handleDiscard}
                                     type='button'
                                     className='border-gray-300 border-2 text-md font-medium p-2 rounded w-28 lg:w-44 outline-none'
                                 >
