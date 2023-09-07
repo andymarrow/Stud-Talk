@@ -31,7 +31,7 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment 
 
   return (
     <div className='border-t-2 border-gray-200 pt-4 px-10 mt-4 bg-[#F8F8F8] border-b-2 lg:pb-0 pb-[100px]'>
-      <div className='overflow-scroll lg:h-[457px]'>
+      <div className='overflow-scroll lg:h-[457px] overflow-x-auto'>
         {comments?.length > 0 ? (
           comments?.map((item: IComment, idx: number) => (
             <>
@@ -40,7 +40,7 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment 
                   user._id === (item.postedBy._ref || item.postedBy._id) && (
                     
                         <div className=' p-2 items-center' key={idx}>
-                           <div className="overflow-x-auto">   
+                           <div className="max-w-[90vw]">   
                           <Link href={`/Profile/${user._id}`}>
                             <div className='flex items-start gap-3'>
                               <div className='w-12 h-12'>
@@ -76,7 +76,10 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment 
           ))
         ) : (
           <NoResults text='No Comments Yet! Be First to do add the comment by logging in ^_^' />
-        )}
+        )
+       
+        
+        }
       </div>
      {userProfile && <div className='absolute bottom-0 left-0  pb-6 px-2 md:px-10 '>
      <form onSubmit={addComment} className='flex gap-4'>
