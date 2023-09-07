@@ -4,6 +4,7 @@ const nextConfig = {
     ignoreBuildErrors:true,
   }, 
   
+  
   reactStrictMode: true,
   images:{
     domains:['images-workbench.99static.com','lh3.googleusercontent.com'],

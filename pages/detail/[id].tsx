@@ -178,6 +178,7 @@ const addComment= async(e: { preventDefault: () => void })=>{
                                 {userProfile && (
                                   <LikeButton 
                                   likes={post.likes}
+                                  
                                     handlelike={()=> handleLike(true)}
                                     handleDislike={()=> handleLike(false)}
                                   />
