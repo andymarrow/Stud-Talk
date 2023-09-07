@@ -59,7 +59,7 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment 
                         </div>
                       </Link>
                       <div>
-                        <p className='-mt-5 ml-16 text-[16px] mr-8 break-all'>
+                        <p className='-mt-5 ml-16 text-[16px] mr-8 whitespace-normal'>
                           {item.comment}
                         </p>
                       </div>
