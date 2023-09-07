@@ -38,31 +38,33 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment 
               {allUsers?.map(
                 (user: IUser) =>
                   user._id === (item.postedBy._ref || item.postedBy._id) && (
-                    <div className=' p-2 items-center' key={idx}>
-                      <Link href={`/Profile/${user._id}`}>
-                        <div className='flex items-start gap-3'>
-                          <div className='w-12 h-12'>
-                            <Image
-                              width={48}
-                              height={48}
-                              className='rounded-full cursor-pointer'
-                              src={user.image}
-                              alt='user-Profile'
-                              layout='responsive'
-                            />
-                          </div>
+                    <div className='overflow-x-auto'>    
+                        <div className=' p-2 items-center' key={idx}>
+                          <Link href={`/Profile/${user._id}`}>
+                            <div className='flex items-start gap-3'>
+                              <div className='w-12 h-12'>
+                                <Image
+                                  width={48}
+                                  height={48}
+                                  className='rounded-full cursor-pointer'
+                                  src={user.image}
+                                  alt='user-Profile'
+                                  layout='responsive'
+                                />
+                              </div>
 
-                          <p className='flex cursor-pointer gap-1 items-center text-[18px] font-bold leading-6 text-primary'>
-                            {user.userName}{' '}
-                            <GoVerified className='text-blue-400' />
-                          </p>
+                              <p className='flex cursor-pointer gap-1 items-center text-[18px] font-bold leading-6 text-primary'>
+                                {user.userName}{' '}
+                                <GoVerified className='text-blue-400' />
+                              </p>
+                            </div>
+                          </Link>
+                          <div>
+                            <p className='-mt-5 ml-16 text-[16px] mr-8 break-words'>
+                              {item.comment}
+                            </p>
+                          </div>
                         </div>
-                      </Link>
-                      <div>
-                        <p className='-mt-5 ml-16 text-[16px] mr-8 break-words'>
-                          {item.comment}
-                        </p>
-                      </div>
                     </div>
                   )
               )}
