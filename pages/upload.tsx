@@ -86,7 +86,7 @@ const Upload = () => {
       <div className='bg-white rounded-lg xl:h-[80vh] md:w-[60%] w-[95%]  flex gap-6 flex-wrap justify-between items-center p-14 pt-6 '>
         <div>
             <div>
-                <p className='text-2xl font-bold'>Upload Videos</p>
+                <p className='text-2xl font-bold'>Upload Video</p>
                 <p className='text-md text-gray-400'>Post a video to your account</p>
             </div>
             <div className='border-dashed rounded-xl border-4 border-gray-200 flex flex-col justify-center items-center outline-none mt-10 w-[260px] h-[460px] p-10 cursor-pointer hover:border-green-300 hover:bg-gray-100 '>
@@ -106,59 +106,67 @@ const Upload = () => {
                         
                     ):(
                         <div>
-                            {Videoasset ?(
-                                <div>
-                                    <video
-                                        src={Videoasset.url}
-                                        loop
-                                        controls
-                                        className='rounded-xl h-[400px] mt-10 bg-black '
-                                    ></video>
-                                    
+                            {!Videoasset ?(
+                                <label className='cursor-pointer'>
+                                <div className='flex flex-col items-center justify-center h-full'>
+                                    <div className='flex flex-col items-center justify-center'>
+                                        <p className='font-bold text-xl'>
+                                            <FaCloudUploadAlt color="skyblue" className="text-gray-300 text-6xl"/>
+                                        </p>
+                                        <p className="text-xl font-semibold">
+                                            Upload video
+                                        </p>
+
+                                    </div>
+                                    <p className='text-gray-400 text-center mt-10 text-sm leading-10'>
+                                       Mp4 or WebM or ogg <br/>
+                                       720x1280 or higher <br/>
+                                       Up to 10 minutes <br/>
+                                       Less than 2GB
+                                 
+                                    </p>
+                                    <p className='bg-customPink text-center mt-10 rounded text-white text-md font-medium p-2 w-52 outline-none'>
+                                      Select file  
+                                    </p>
 
 
                                 </div>
+                                <input 
+                                    type='file'
+                                    name='upload-video'
+                                    onChange={(e)=> uploadVideo(e)}
+                                    className='w-0 h-0'
+                                />
+
+                            </label>
+
+                                
                             ):(
-                                <label className='cursor-pointer'>
-                                    <div className='flex flex-col items-center justify-center h-full'>
-                                        <div className='flex flex-col items-center justify-center'>
-                                            <p className='font-bold text-xl'>
-                                                <FaCloudUploadAlt color="skyblue" className="text-gray-300 text-6xl"/>
-                                            </p>
-                                            <p className="text-xl font-semibold">
-                                                Upload video
-                                            </p>
-
-                                        </div>
-                                        <p className='text-gray-400 text-center mt-10 text-sm leading-10'>
-                                           Mp4 or WebM or ogg <br/>
-                                           720x1280 or higher <br/>
-                                           Up to 10 minutes <br/>
-                                           Less than 2GB
-                                     
-                                        </p>
-                                        <p className='bg-customPink text-center mt-10 rounded text-white text-md font-medium p-2 w-52 outline-none'>
-                                          Select file  
-                                        </p>
-
-
-                                    </div>
-                                    <input 
-                                        type='file'
-                                        name='upload-video'
-                                        onChange={(e)=> uploadVideo(e)}
-                                        className='w-0 h-0'
-                                    />
-
-                                </label>
-                            )}
-
-                        </div>
-                    )
-                }
+                                
+<div className=' rounded-3xl w-[300px]  p-4 flex flex-col gap-6 justify-center items-center'>
+                    <video
+                      className='rounded-xl h-[462px] mt-16 bg-black'
+                      controls
+                      loop
+                      src={Videoasset?.url}
+                    />
+                    <div className=' flex justify-between gap-20'>
+                      <p className='text-lg'>{Videoasset.originalFilename}</p>
+                      <button
+                        type='button'
+                        className=' rounded-full bg-gray-200 text-red-400 p-2 text-xl cursor-pointer outline-none hover:shadow-md transition-all duration-500 ease-in-out'
+                        onClick={() => setVideoAsset(undefined)}
+                      >
+                        <MdDelete />
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
                     {wrongFileType && (
                         <p className='text-center text-xl text-red-400 font-semibold mt-4 w-[250px]'>
-                         please select a video file
+                         please select a video file (mp4 or webm or ogg)
                         </p>
                     )}
             </div>
@@ -197,11 +205,12 @@ const Upload = () => {
                                     Discard
                                 </button>
                                 <button
+                                    disabled={Videoasset?.url ? false : true}
                                     onClick={handlePost}
                                     type='button'
                                     className='bg-customPink text-white text-md font-medium p-2 rounded w-28 lg:w-44 outline-none'
                                 >
-                                    Post
+                                    {savingPost ? 'Posting...' : 'Post'}
                                 </button>
 
                             </div>
