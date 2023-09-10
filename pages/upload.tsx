@@ -80,6 +80,7 @@ const Upload = () => {
         setVideoAsset(undefined);
         setCaption('');
         setCatagory('');
+        setIsLoading(false);
       };
     
 
