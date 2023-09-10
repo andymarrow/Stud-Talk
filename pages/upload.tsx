@@ -20,6 +20,10 @@ const Upload = () => {
     const { userProfile}:{userProfile:any}= useAuthStore();
     const router=useRouter();
     
+    useEffect(() => {
+        if (!userProfile) router.push('/');
+      }, [userProfile, router]);
+
     const uploadVideo=async(e:any)=>{
         const selectedFile=e.target.files[0];
         const fileTypes=['video/mp4','video/webm','video/ogg']
@@ -34,8 +38,8 @@ const Upload = () => {
             })
             .then((data)=>{
                 setVideoAsset(data);
-                setWrongFileType(false);
-            })
+                setIsLoading(false);
+            });
         }
         else{
             setIsLoading(false);
@@ -97,8 +101,7 @@ const Upload = () => {
                             role="status">
                             <span
                                 className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
-                                >Loading...</span
-                            >
+                                > Uploading...</span>
                             
                         </div>
                         
@@ -164,12 +167,13 @@ const Upload = () => {
                 )}
               </div>
             )}
+             </div>
                     {wrongFileType && (
                         <p className='text-center text-xl text-red-400 font-semibold mt-4 w-[250px]'>
                          please select a video file (mp4 or webm or ogg)
                         </p>
                     )}
-            </div>
+           
                 
 
         </div>
